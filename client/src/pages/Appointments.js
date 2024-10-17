@@ -32,7 +32,7 @@ function Appointments() {
         dataIndex: "_id",
     },
     {
-      title: "Doctor",
+      title: "Médico",
       dataIndex: "name",
       render: (text, record) => (
         <span>
@@ -41,7 +41,7 @@ function Appointments() {
       ),
     },
     {
-      title: "Phone",
+      title: "Teléfono",
       dataIndex: "phoneNumber",
       render: (text, record) => (
         <span>
@@ -50,7 +50,7 @@ function Appointments() {
       ),
     },
     {
-      title: "Date & Time",
+      title: "Fecha y Hora",
       dataIndex: "createdAt",
       render: (text, record) => (
         <span>
@@ -59,7 +59,7 @@ function Appointments() {
       ),
     },
     {
-        title: "Status",
+        title: "Estado",
         dataIndex: "status",
     }
   ];
@@ -67,7 +67,7 @@ function Appointments() {
     getAppointmentsData();
   }, []);
   return  <Layout>
-  <h1 className="page-title">Appointments</h1>
+  <h1 className="page-title">Citas</h1>
   <hr />
   <Table columns={columns} dataSource={appointments} />
 </Layout>

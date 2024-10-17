@@ -85,17 +85,43 @@ router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
 
 router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
   try {
-    const newdoctor = new Doctor({ ...req.body, status: "pending" });
-    await newdoctor.save();
+  //   const newdoctor = new Doctor({ ...req.body, status: "pending" });
+  //   await newdoctor.save();
+  //   const adminUser = await User.findOne({ isAdmin: true });
+
+  //   const unseenNotifications = adminUser.unseenNotifications;
+  //   unseenNotifications.push({
+  //     type: "new-doctor-request",
+  //     message: `${newdoctor.firstName} ${newdoctor.lastName} has applied for a doctor account`,
+  //     data: {
+  //       doctorId: newdoctor._id,
+  //       name: newdoctor.firstName + " " + newdoctor.lastName,
+  //     },
+  //     onClickPath: "/admin/doctorslist",
+  //   });
+  //   await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
+  //   res.status(200).send({
+  //     success: true,
+  //     message: "Doctor account applied successfully",
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).send({
+  //     message: "Error applying doctor account",
+  //     success: false,
+  //     error,
+  //   });
+  const newUser = new User({ ...req.body});
+    await newUser.save();
     const adminUser = await User.findOne({ isAdmin: true });
 
     const unseenNotifications = adminUser.unseenNotifications;
     unseenNotifications.push({
       type: "new-doctor-request",
-      message: `${newdoctor.firstName} ${newdoctor.lastName} has applied for a doctor account`,
+      message: `${newUser.firstName} ${newUser.lastName} has applied for a doctor account`,
       data: {
-        doctorId: newdoctor._id,
-        name: newdoctor.firstName + " " + newdoctor.lastName,
+        doctorId: newUser._id,
+        name: newUser.firstName + " " + newUser.lastName,
       },
       onClickPath: "/admin/doctorslist",
     });
@@ -166,7 +192,7 @@ router.post("/delete-all-notifications", authMiddleware, async (req, res) => {
 
 router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
   try {
-    const doctors = await Doctor.find({ status: "approved" });
+    const doctors = await User.find({ isDoctor: true });
     res.status(200).send({
       message: "Doctors fetched successfully",
       success: true,
@@ -184,13 +210,13 @@ router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
 
 router.post("/book-appointment", authMiddleware, async (req, res) => {
   try {
-    req.body.status = "pending";
+    req.body.status = "aprobado";
     req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
     req.body.time = moment(req.body.time, "HH:mm").toISOString();
     const newAppointment = new Appointment(req.body);
     await newAppointment.save();
     //pushing notification to doctor based on his userid
-    const user = await User.findOne({ _id: req.body.doctorInfo.userId });
+    const user = await User.findOne({ _id: req.body.doctorInfo._id });
     user.unseenNotifications.push({
       type: "new-appointment-request",
       message: `A new appointment request has been made by ${req.body.userInfo.name}`,

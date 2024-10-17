@@ -6,7 +6,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   try {
-    const doctors = await Doctor.find({});
+    const doctors = await User.find({isDoctor: true});
     res.status(200).send({
       message: "Doctors fetched successfully",
       success: true,

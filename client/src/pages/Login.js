@@ -30,13 +30,13 @@ function Login() {
   return (
     <div className="authentication">
       <div className="authentication-form card p-3">
-        <h1 className="card-title">Welcome Back</h1>
+        <h1 className="card-title">Bienvenido a MediSync</h1>
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Email" name="email">
             <Input placeholder="Email" />
           </Form.Item>
-          <Form.Item label="Password" name="password">
-            <Input placeholder="Password" type="password" />
+          <Form.Item label="Contraseña" name="password">
+            <Input placeholder="Contraseña" type="password" />
           </Form.Item>
 
           
@@ -45,7 +45,7 @@ function Login() {
           </Button>
 
           <Link to="/register" className="anchor mt-2">
-            CLICK HERE TO REGISTER
+            CLIC AQUI PARA REGISTRARSE
           </Link>
          
         </Form>

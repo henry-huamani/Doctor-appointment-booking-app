@@ -54,8 +54,8 @@ function DoctorsList() {
   }, []);
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Nombres",
+      dataIndex: "firstName",
       render: (text, record) => (
         <span>
           {record.firstName} {record.lastName}
@@ -63,46 +63,22 @@ function DoctorsList() {
       ),
     },
     {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
       title: "Phone",
       dataIndex: "phoneNumber",
     },
     {
-      title: "Created At",
+      title: "Creado",
       dataIndex: "createdAt",
       render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
-    },
-    {
-      title: "status",
-      dataIndex: "status",
-    },
-    {
-      title: "Actions",
-      dataIndex: "actions",
-      render: (text, record) => (
-        <div className="d-flex">
-          {record.status === "pending" && (
-            <h1
-              className="anchor"
-              onClick={() => changeDoctorStatus(record, "approved")}
-            >
-              Approve
-            </h1>
-          )}
-          {record.status === "approved" && (
-            <h1
-              className="anchor"
-              onClick={() => changeDoctorStatus(record, "blocked")}
-            >
-              Block
-            </h1>
-          )}
-        </div>
-      ),
-    },
+    }
   ];
   return (
     <Layout>
-      <h1 className="page-header">Doctors List</h1>
+      <h1 className="page-header">Lista de Médicos</h1>
       <hr />
       <Table columns={columns} dataSource={doctors} />
     </Layout>

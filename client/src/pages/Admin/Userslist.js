@@ -32,32 +32,27 @@ function Userslist() {
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Nombres",
+      dataIndex: "firstName",
+    },
+    {
+      title: "Apellidos",
+      dataIndex: "lastName",
     },
     {
       title: "Email",
       dataIndex: "email",
     },
     {
-      title: "Created At",
+      title: "Creado",
       dataIndex: "createdAt",
       render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
-    },
-    {
-      title: "Actions",
-      dataIndex: "actions",
-      render: (text, record) => (
-        <div className="d-flex">
-          <h1 className="anchor">Block</h1>
-        </div>
-      ),
-    },
+    }
   ];
 
   return (
     <Layout>
-      <h1 className="page-header">Users List</h1>
+      <h1 className="page-header">Lista de Usuarios</h1>
       <hr />
       <Table columns={columns} dataSource={users}/>
     </Layout>

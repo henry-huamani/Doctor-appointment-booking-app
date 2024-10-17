@@ -94,7 +94,7 @@ function BookAppointment() {
 
       dispatch(hideLoading());
       if (response.data.success) {
-        
+
         toast.success(response.data.message);
         navigate('/appointments')
       }
@@ -119,7 +119,7 @@ function BookAppointment() {
 
             <Col span={8} sm={24} xs={24} lg={8}>
               <img
-                src="https://thumbs.dreamstime.com/b/finger-press-book-now-button-booking-reservation-icon-online-149789867.jpg"
+                src="https://zonadeinmersion.com/wp-content/uploads/2016/03/reserva-ahora.jpg"
                 alt=""
                 width="100%"
                 height='400'
@@ -127,23 +127,23 @@ function BookAppointment() {
             </Col>
             <Col span={8} sm={24} xs={24} lg={8}>
               <h1 className="normal-text">
-                <b>Timings :</b> {doctor.timings[0]} - {doctor.timings[1]}
+                <b>Horario :</b> {doctor.timings[0]} - {doctor.timings[1]}
               </h1>
               <p>
-                <b>Phone Number : </b>
+                <b>Especialidad : </b>
+                {doctor.speciality}
+              </p>
+              <p>
+                <b>Experiencia : </b>
+                {doctor.experience}
+              </p>
+              <p>
+                <b>Número de Colegiado : </b>
+                {doctor.collegiateNumber}
+              </p>
+              <p>
+                <b>Teléfono : </b>
                 {doctor.phoneNumber}
-              </p>
-              <p>
-                <b>Address : </b>
-                {doctor.address}
-              </p>
-              <p>
-                <b>Fee per Visit : </b>
-                {doctor.feePerCunsultation}
-              </p>
-              <p>
-                <b>Website : </b>
-                {doctor.website}
               </p>
               <div className="d-flex flex-column pt-2 mt-2">
                 <DatePicker
@@ -161,11 +161,11 @@ function BookAppointment() {
                     setTime(moment(value).format("HH:mm"));
                   }}
                 />
-              {!isAvailable &&   <Button
+                {!isAvailable && <Button
                   className="primary-button mt-3 full-width-button"
                   onClick={checkAvailability}
                 >
-                  Check Availability
+                  Verificar Disponibilidad
                 </Button>}
 
                 {isAvailable && (
@@ -173,12 +173,12 @@ function BookAppointment() {
                     className="primary-button mt-3 full-width-button"
                     onClick={bookNow}
                   >
-                    Book Now
+                    Reservar Ahora
                   </Button>
                 )}
               </div>
             </Col>
-           
+
           </Row>
         </div>
       )}

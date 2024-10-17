@@ -110,6 +110,9 @@ p{
    justify-content: center;
    background-color: #005555;
 }
+.authentication-form-register{
+  width: 70vw;
+}
 .authentication-form{
   width: 400px;
 }

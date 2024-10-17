@@ -58,17 +58,21 @@ function DoctorAppointments() {
       dataIndex: "_id",
     },
     {
-      title: "Patient",
+      title: "Paciente",
       dataIndex: "name",
-      render: (text, record) => <span>{record.userInfo.name}</span>,
+      render: (text, record) => (
+        <span>
+          {record.userInfo.firstName} {record.userInfo.lastName}
+        </span>
+      )
     },
     {
-      title: "Phone",
+      title: "Teléfono",
       dataIndex: "phoneNumber",
       render: (text, record) => <span>{record.doctorInfo.phoneNumber}</span>,
     },
     {
-      title: "Date & Time",
+      title: "Fecha y Hora",
       dataIndex: "createdAt",
       render: (text, record) => (
         <span>
@@ -78,40 +82,16 @@ function DoctorAppointments() {
       ),
     },
     {
-      title: "Status",
+      title: "Estado",
       dataIndex: "status",
-    },
-    {
-      title: "Actions",
-      dataIndex: "actions",
-      render: (text, record) => (
-        <div className="d-flex">
-          {record.status === "pending" && (
-            <div className="d-flex">
-              <h1
-                className="anchor px-2"
-                onClick={() => changeAppointmentStatus(record, "approved")}
-              >
-                Approve
-              </h1>
-              <h1
-                className="anchor"
-                onClick={() => changeAppointmentStatus(record, "rejected")}
-              >
-                Reject
-              </h1>
-            </div>
-          )}
-        </div>
-      ),
-    },
+    }
   ];
   useEffect(() => {
     getAppointmentsData();
   }, []);
   return (
     <Layout>
-      <h1 className="page-header">Appointments</h1>
+      <h1 className="page-header">Citas</h1>
       <hr />
       <Table columns={columns} dataSource={appointments} />
     </Layout>

@@ -22,7 +22,7 @@ router.post("/get-doctor-info-by-user-id", authMiddleware, async (req, res) => {
 
 router.post("/get-doctor-info-by-id", authMiddleware, async (req, res) => {
   try {
-    const doctor = await Doctor.findOne({ _id: req.body.doctorId });
+    const doctor = await User.findOne({ _id: req.body.doctorId });
     res.status(200).send({
       success: true,
       message: "Doctor info fetched successfully",
@@ -58,8 +58,8 @@ router.get(
   authMiddleware,
   async (req, res) => {
     try {
-      const doctor = await Doctor.findOne({ userId: req.body.userId });
-      const appointments = await Appointment.find({ doctorId: doctor._id });
+      // const doctor = await Doctor.findOne({ userId: req.body.userId });
+      const appointments = await Appointment.find({ doctorId: req.body.userId });
       res.status(200).send({
         message: "Appointments fetched successfully",
         success: true,

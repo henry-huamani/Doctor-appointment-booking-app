@@ -13,19 +13,19 @@ function Doctor({ doctor }) {
       </h1>
       <hr />
       <p>
-        <b>Phone Number : </b>
+        <b>Especialidad : </b>
+        {doctor.speciality}
+      </p>
+      <p>
+        <b>Experiencia : </b>
+        {doctor.experience}
+      </p>
+      <p>
+        <b>Teléfono : </b>
         {doctor.phoneNumber}
       </p>
       <p>
-        <b>Address : </b>
-        {doctor.address}
-      </p>
-      <p>
-        <b>Fee per Visit : </b>
-        {doctor.feePerCunsultation}
-      </p>
-      <p>
-        <b>Timings : </b>
+        <b>Horario : </b>
         {doctor.timings[0]} - {doctor.timings[1]}
       </p>
     </div>

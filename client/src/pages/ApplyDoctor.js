@@ -17,10 +17,10 @@ function ApplyDoctor() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/apply-doctor-account",
+        "/api/user/register",
         {
           ...values,
-          userId: user._id,
+          isDoctor: true,
           timings: [
             moment(values.timings[0]).format("HH:mm"),
             moment(values.timings[1]).format("HH:mm"),
@@ -47,7 +47,7 @@ function ApplyDoctor() {
 
   return (
     <Layout>
-      <h1 className="page-title">Apply Doctor</h1>
+      <h1 className="page-title">Agregar Médico</h1>
       <hr />
 
       <DoctorForm onFinish={onFinish} />

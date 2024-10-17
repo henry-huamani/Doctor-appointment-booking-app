@@ -17,96 +17,86 @@ function DoctorForm({ onFinish, initivalValues }) {
         }),
       }}
     >
-      <h1 className="card-title mt-3">Personal Information</h1>
+      <h1 className="card-title mt-3">Información Personal</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="First Name"
+            label="Nombres"
             name="firstName"
             rules={[{ required: true }]}
           >
-            <Input placeholder="First Name" />
+            <Input placeholder="Nombres" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Last Name"
+            label="Apellidos"
             name="lastName"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Last Name" />
+            <Input placeholder="Apellidos" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Phone Number"
+            label="Teléfono"
             name="phoneNumber"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Phone Number" />
+            <Input placeholder="Teléfono" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Website"
-            name="website"
+            label="Documento de Identidad"
+            name="identityDocument"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Website" />
-          </Form.Item>
-        </Col>
-        <Col span={8} xs={24} sm={24} lg={8}>
-          <Form.Item
-            required
-            label="Address"
-            name="address"
-            rules={[{ required: true }]}
-          >
-            <Input placeholder="Address" />
+            <Input placeholder="Documento de Identidad" />
           </Form.Item>
         </Col>
       </Row>
       <hr />
-      <h1 className="card-title mt-3">Professional Information</h1>
+      <h1 className="card-title mt-3">Información Profesional</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Specialization"
-            name="specialization"
+            label="Especialidad"
+            name="speciality"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Specialization" />
+            <Input placeholder="Especialidad" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Experience"
+            label="Experiencia"
             name="experience"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Experience" type="number" />
+            <Input placeholder="Experiencia" type="number" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Fee Per Cunsultation"
-            name="feePerCunsultation"
+            label="Número de Colegiado"
+            name="collegiateNumber"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Fee Per Cunsultation" type="number" />
+            <Input placeholder="Número de Colegiado" type="number" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Timings"
+            label="Horario"
             name="timings"
             rules={[{ required: true }]}
           >
@@ -114,10 +104,34 @@ function DoctorForm({ onFinish, initivalValues }) {
           </Form.Item>
         </Col>
       </Row>
+      <hr />
+      <h1 className="card-title mt-3">Credenciales</h1>
+      <Row gutter={20}>
+        <Col span={8} xs={24} sm={24} lg={8}>
+          <Form.Item
+            required
+            label="Email"
+            name="email"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Email" />
+          </Form.Item>
+        </Col>
+        <Col span={8} xs={24} sm={24} lg={8}>
+          <Form.Item
+            required
+            label="Contraseña"
+            name="password"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Contraseña" type="password" />
+          </Form.Item>
+        </Col>
+      </Row>
 
       <div className="d-flex justify-content-end">
         <Button className="primary-button" htmlType="submit">
-          SUBMIT
+          AGREGAR
         </Button>
       </div>
     </Form>
